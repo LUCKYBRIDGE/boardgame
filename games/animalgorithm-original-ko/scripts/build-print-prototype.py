@@ -282,7 +282,7 @@ def draw_cover(c):
     c.setFillColor(colors.black); c.setFont("NanumBold",12); c.drawString(m,ph-79*mm,"세트 구성")
     items=[
         "동물 카드 56장: 이름 있는 원본 46장 + 빈 동물 카드 10장",
-        "분류 기준 카드 8장: PLIX 원본 카테고리의 한국어판",
+        "분류 기준 카드 8장: PLIX 원본 분류 기준의 한국어판",
         "직접 작성 Category 8장: PROJECT DEFAULT 추가(원본형 4장 + 자유형 4장)",
         "왼쪽 / 다음 카드 / 오른쪽 플레이 영역: A3 기본 + A4 컴팩트 대체판",
         "상세 규칙 2쪽 + 플레이테스트 기록지 1쪽",
@@ -317,7 +317,7 @@ def draw_playmat(c, compact=False):
         pw,ph=landscape(A3); title="A3 기본 플레이 영역"
     c.setPageSize((pw,ph)); margin=12*mm
     c.setFont("NanumBold",15); c.drawString(margin,ph-11*mm,title)
-    c.setFont("Nanum",7.5); c.setFillColor(colors.HexColor("#555555")); c.drawRightString(pw-margin,ph-10.5*mm,"프로젝트 기본(PROJECT DEFAULT): "다음 카드" 영역 포함")
+    c.setFont("Nanum",7.5); c.setFillColor(colors.HexColor("#555555")); c.drawRightString(pw-margin,ph-10.5*mm,"프로젝트 기본(PROJECT DEFAULT): 다음 카드 영역 포함")
     usable_w=pw-2*margin; top=ph-20*mm; bottom=12*mm; usable_h=top-bottom
     next_w=(72*mm if not compact else 63*mm)
     side_w=(usable_w-next_w)/2
@@ -326,7 +326,7 @@ def draw_playmat(c, compact=False):
         c.setFillColor(colors.white); c.setStrokeColor(colors.black); c.setLineWidth(1.4); c.roundRect(x,y,w,h,4*mm,stroke=1,fill=1)
         c.setFillColor(colors.black); c.setFont("NanumBold",22 if not compact else 18); c.drawCentredString(x+w/2,y+h-16*mm,en)
         c.setFont("NanumBold",11 if not compact else 9); c.drawCentredString(x+w/2,y+h-25*mm,ko)
-    # 다음 카드 card footprint
+    # 다음 카드 위치 표시
     nx,ny,nw,nh=zones[1][0],zones[1][1],zones[1][2],zones[1][3]
     fpw=(64*mm if not compact else 48*mm); fph=99/64*fpw
     fx=nx+(nw-fpw)/2; fy=ny+(nh-fph)/2-5*mm
@@ -376,7 +376,7 @@ def draw_rules(c):
         ("[PROJECT DEFAULT] 왼쪽 / 다음 카드 / 오른쪽 플레이 영역을 중앙에 놓습니다.",),
         ("[PROJECT DEFAULT] 동물 카드를 모두 볼 수 있게 펼칩니다.",),
         ("한 명이 결정자가 됩니다. [SOURCE]",),
-        ("결정자는 분류 기준 카드 카드 1장을 고르거나 직접 카테고리를 작성합니다. 다른 플레이어에게는 비밀로 합니다. [SOURCE + PROJECT DEFAULT 보관 방식]",),
+        ("결정자는 분류 기준 카드 1장을 고르거나 직접 카테고리를 작성합니다. 다른 플레이어에게는 비밀로 합니다. [SOURCE + PROJECT DEFAULT 보관 방식]",),
         ("[PROJECT DEFAULT] 시작 예시 동물 3장을 왼쪽 / 오른쪽에 놓습니다. 양쪽에 최소 1장씩 둡니다.",),
     ]
     for i,(t,) in enumerate(steps,1):
