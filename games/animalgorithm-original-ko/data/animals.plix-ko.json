@@ -1,0 +1,58 @@
+{
+  "source": "plix-deck-animal-database.pdf",
+  "namedAnimalCards": 46,
+  "blankAnimalCards": 10,
+  "animals": [
+    {"id":"newt","nameEn":"Newt","nameKo":"영원","sourcePage":1,"sourceSlot":1},
+    {"id":"turkey","nameEn":"Turkey","nameKo":"칠면조","sourcePage":1,"sourceSlot":2},
+    {"id":"ostrich","nameEn":"Ostrich","nameKo":"타조","sourcePage":1,"sourceSlot":3},
+    {"id":"toad","nameEn":"Toad","nameKo":"두꺼비","sourcePage":1,"sourceSlot":4},
+    {"id":"platypus","nameEn":"Platypus","nameKo":"오리너구리","sourcePage":1,"sourceSlot":5},
+    {"id":"shark","nameEn":"Shark","nameKo":"상어","sourcePage":1,"sourceSlot":6},
+    {"id":"frog","nameEn":"Frog","nameKo":"개구리","sourcePage":1,"sourceSlot":7},
+    {"id":"chameleon","nameEn":"Chameleon","nameKo":"카멜레온","sourcePage":1,"sourceSlot":8},
+
+    {"id":"flamingo","nameEn":"Flamingo","nameKo":"홍학","sourcePage":2,"sourceSlot":1},
+    {"id":"snake","nameEn":"Snake","nameKo":"뱀","sourcePage":2,"sourceSlot":2},
+    {"id":"clownfish","nameEn":"Clownfish","nameKo":"흰동가리","sourcePage":2,"sourceSlot":3},
+    {"id":"duck","nameEn":"Duck","nameKo":"오리","sourcePage":2,"sourceSlot":4},
+    {"id":"seal","nameEn":"Seal","nameKo":"물개","sourcePage":2,"sourceSlot":5},
+    {"id":"penguin","nameEn":"Penguin","nameKo":"펭귄","sourcePage":2,"sourceSlot":6},
+    {"id":"sparrow","nameEn":"Sparrow","nameKo":"참새","sourcePage":2,"sourceSlot":7},
+    {"id":"eagle","nameEn":"Eagle","nameKo":"독수리","sourcePage":2,"sourceSlot":8},
+
+    {"id":"cat","nameEn":"Cat","nameKo":"고양이","sourcePage":3,"sourceSlot":1},
+    {"id":"dog","nameEn":"Dog","nameKo":"개","sourcePage":3,"sourceSlot":2},
+    {"id":"walrus","nameEn":"Walrus","nameKo":"바다코끼리","sourcePage":3,"sourceSlot":3},
+    {"id":"crocodile","nameEn":"Crocodile","nameKo":"악어","sourcePage":3,"sourceSlot":4},
+    {"id":"dragonfly","nameEn":"Dragonfly","nameKo":"잠자리","sourcePage":3,"sourceSlot":5},
+    {"id":"chicken","nameEn":"Chicken","nameKo":"닭","sourcePage":3,"sourceSlot":6},
+    {"id":"butterfly","nameEn":"Butterfly","nameKo":"나비","sourcePage":3,"sourceSlot":7},
+    {"id":"bear","nameEn":"Bear","nameKo":"곰","sourcePage":3,"sourceSlot":8},
+
+    {"id":"beetle","nameEn":"Beetle","nameKo":"딱정벌레","sourcePage":4,"sourceSlot":1},
+    {"id":"salmon","nameEn":"Salmon","nameKo":"연어","sourcePage":4,"sourceSlot":2},
+    {"id":"elephant","nameEn":"Elephant","nameKo":"코끼리","sourcePage":4,"sourceSlot":3},
+    {"id":"tortoise","nameEn":"Tortoise","nameKo":"육지거북","sourcePage":4,"sourceSlot":4},
+    {"id":"salamander","nameEn":"Salamander","nameKo":"도롱뇽","sourcePage":4,"sourceSlot":5},
+    {"id":"goldfish","nameEn":"Goldfish","nameKo":"금붕어","sourcePage":4,"sourceSlot":6},
+    {"id":"parrot","nameEn":"Parrot","nameKo":"앵무새","sourcePage":4,"sourceSlot":7},
+    {"id":"tuna","nameEn":"Tuna","nameKo":"참치","sourcePage":4,"sourceSlot":8},
+
+    {"id":"ant","nameEn":"Ant","nameKo":"개미","sourcePage":5,"sourceSlot":1},
+    {"id":"cow","nameEn":"Cow","nameKo":"소","sourcePage":5,"sourceSlot":2},
+    {"id":"dolphin","nameEn":"Dolphin","nameKo":"돌고래","sourcePage":5,"sourceSlot":3},
+    {"id":"donkey","nameEn":"Donkey","nameKo":"당나귀","sourcePage":5,"sourceSlot":4},
+    {"id":"whale","nameEn":"Whale","nameKo":"고래","sourcePage":5,"sourceSlot":5},
+    {"id":"horse","nameEn":"Horse","nameKo":"말","sourcePage":5,"sourceSlot":6},
+    {"id":"bat","nameEn":"Bat","nameKo":"박쥐","sourcePage":5,"sourceSlot":7},
+    {"id":"kangaroo","nameEn":"Kangaroo","nameKo":"캥거루","sourcePage":5,"sourceSlot":8},
+
+    {"id":"bee","nameEn":"Bee","nameKo":"벌","sourcePage":6,"sourceSlot":1},
+    {"id":"gecko","nameEn":"Gecko","nameKo":"도마뱀붙이(게코)","sourcePage":6,"sourceSlot":2},
+    {"id":"lion","nameEn":"Lion","nameKo":"사자","sourcePage":6,"sourceSlot":3},
+    {"id":"llama","nameEn":"Llama","nameKo":"라마","sourcePage":6,"sourceSlot":4},
+    {"id":"turtle","nameEn":"Turtle","nameKo":"거북","sourcePage":6,"sourceSlot":5},
+    {"id":"owl","nameEn":"Owl","nameKo":"올빼미","sourcePage":6,"sourceSlot":7}
+  ]
+}
