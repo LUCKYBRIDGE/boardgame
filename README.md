@@ -2,22 +2,30 @@
 
 교육용 보드게임을 설계·검증·제품화하기 위한 저장소입니다.
 
-## 프로젝트 트랙
+## 현재 프로젝트
 
-### 1. Animal-gorithm Original KO
+### Animal-gorithm Original KO
 `games/animalgorithm-original-ko/`
 
-PLIX 원본 **Animal-gorithm**의 플레이 구조를 우선 보존하면서 한국어로 구현하는 트랙입니다.
-원본이 명시하지 않은 세부 규칙만 별도 문서에서 프로젝트 기본값으로 정의합니다.
+PLIX 원작의 핵심 플레이 구조를 유지한 한국어 충실판입니다.
+현재 최우선 개발 대상입니다.
 
-### 2. 동물고리즘 – AI 탐정
+### 동물고리즘 – AI 탐정
 `games/animalgorithm-ai-detective/`
 
-원본에서 출발하되 초등 AI 수업용으로 Feature, 데이터 스키마, 자동 판정, 난이도 및 플레이테스트 체계를 강화하는 개선 트랙입니다.
+Original KO를 실제로 검증한 뒤 Feature, Query Efficiency, 구조화 데이터,
+자동 판정 등을 추가해 발전시키는 개선판입니다.
 
-## 원칙
+## 기준 문서
 
-- 원본형과 개선형을 섞지 않습니다.
-- 원본형에서 추가한 규칙은 반드시 `PROJECT DEFAULT`로 표시합니다.
-- 개선형 설계는 원본형 검증 후 별도 진행합니다.
-- 원본 일러스트·레이아웃·문구의 배포 범위는 출처/라이선스 확인 후 결정합니다.
+- `PROJECT_SOURCE.md` — 프로젝트 전체 방향
+- `AGENTS.md` — 저장소/개발 에이전트 작업 규칙
+- `games/animalgorithm-original-ko/ORIGINAL_KO_CURRENT.md` — Original KO 최신 규칙
+
+## 관리 원칙
+
+- 원작판과 개선판을 섞지 않습니다.
+- 원작에 없는 세부 규칙은 `PROJECT DEFAULT`로 표시합니다.
+- 같은 역할의 버전 문서를 계속 누적하지 않고 현재 파일을 갱신하며 Git 이력으로 과거를 보존합니다.
+- 출력 PDF, CSV, 테스트 로그 등은 파생 산출물이며 현재 기준 문서보다 우선하지 않습니다.
+- 원본 일러스트·레이아웃·문구의 외부 배포 범위는 라이선스 확인 후 결정합니다.
