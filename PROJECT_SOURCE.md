@@ -1,0 +1,103 @@
+# Animalgorithm PROJECT SOURCE
+## Repository mirror of the ChatGPT project SSOT
+
+> 이 파일은 프로젝트 전체 방향의 저장소 미러다.
+> ChatGPT 프로젝트에서는 같은 역할의 `PROJECT_SOURCE.md`를 최신 기준으로 유지한다.
+> 방향이 바뀌면 새 버전 파일을 추가하지 않고 이 파일을 갱신한다.
+
+## 1. 프로젝트 목적
+
+PLIX의 `Animal-gorithm`을 기반으로 초등 AI 교육용 보드게임을 개발한다.
+
+### Track A — Animal-gorithm Original KO
+현재 최우선.
+
+- PLIX 원작의 핵심 플레이 구조 보존
+- 한국어로 실제 플레이 가능하게 구현
+- 원본 동물 이미지는 그대로 활용하는 방향으로 프로토타입 제작
+- 원작이 정하지 않은 최소 운영 규칙만 보완
+
+### Track B — 동물고리즘: AI 탐정
+Track A 검증 후 진행.
+
+- 원작의 장점을 유지
+- 초등 4~6학년 AI 수업에 맞게 Feature, Query Efficiency, 구조화 데이터,
+  자동 판정, 난이도, 협력 모드 등을 추가한 개선판 개발
+
+**두 트랙의 규칙을 섞지 않는다.**
+
+## 2. 원작에서 반드시 보존할 핵심
+
+`SOURCE`
+
+1. 한 명이 Decider가 된다.
+2. Decider가 LEFT / RIGHT 양쪽의 비밀 카테고리를 정한다.
+3. Decider가 동물 카드를 LEFT / RIGHT에 배치한다.
+4. 다른 플레이어들은 다음 동물 카드가 어느 쪽에 들어갈지 예측한다.
+5. 플레이어는 비밀 카테고리를 추측하거나 새 동물 카드를 추가한다.
+6. 누군가 비밀 카테고리를 맞힐 때까지 반복한다.
+7. 다음 판에는 다른 사람이 Decider 역할을 맡는다.
+
+핵심 사고 루프:
+
+데이터 관찰 → 공통점/차이 발견 → 가설 생성 → 새 동물 선택 → 위치 예측 → 결과 확인 → 가설 수정
+
+원작을 단순한 `True / False` 단일 규칙 맞히기로 축소하지 않는다.
+
+## 3. 원작 카드 구성
+
+`SOURCE`
+
+PLIX 동물 카드 자료 기준:
+
+- 이름 있는 동물 카드 46장
+- 빈 동물 카드 10장
+- Category Idea 카드 8장
+
+## 4. 표기
+
+- `SOURCE`: PLIX에서 직접 확인
+- `PROJECT DEFAULT`: 원작에 없어 프로젝트가 정한 운영 기본값
+- `PROPOSAL`: 아직 확정하지 않은 제안
+- `IMPROVED`: AI Detective 전용 설계
+- `OPTIONAL EXPERIMENT`: Original KO 선택 실험
+
+## 5. 이미지 사용 방향
+
+Track A 프로토타입에서는 PLIX 원본 동물 이미지를 그대로 활용하는 방향으로 진행한다.
+
+자체 제작 요소:
+- 한국어 이름/안내
+- LEFT / NEXT / RIGHT 플레이 영역
+- 직접 작성 Category 카드
+- 플레이테스트 자료
+
+외부 배포/판매 전에는 원본 이미지와 카드 디자인의 라이선스 허용 범위를 다시 확인한다.
+
+## 6. GitHub와 ChatGPT 프로젝트의 역할
+
+### ChatGPT 프로젝트
+최신 판단 기준과 PLIX 원본 자료를 유지한다.
+
+### GitHub
+- 현재 기준의 저장소 미러
+- 세부 데이터
+- CSV / JSON Schema
+- 인쇄 및 디자인 자산
+- 플레이테스트 결과
+- 코드
+- 브랜치 / PR / 변경 이력
+
+과거 버전을 파일명으로 계속 누적하지 않고 Git 이력으로 보존한다.
+
+## 7. 현재 우선순위
+
+1. Original KO 규칙 안정화
+2. 원본 46종 카드 한국어화
+3. Category Idea 한국어화
+4. 직접 작성 Category 카드 개선
+5. LEFT / NEXT / RIGHT 판
+6. 인쇄 프로토타입
+7. 플레이테스트
+8. 원작의 장단점 기록
+9. AI Detective 개선판 재설계
