@@ -1,0 +1,14 @@
+{
+  "source": "plix-deck-animal-database.pdf#page=8",
+  "categoryIdeaCards": 8,
+  "pairs": [
+    {"id":"mammal","leftEn":"Mammal","rightEn":"Not mammal","leftKo":"포유류","rightKo":"포유류가 아님"},
+    {"id":"colorful","leftEn":"Colorful","rightEn":"Not colorful","leftKo":"색이 화려함","rightKo":"색이 화려하지 않음"},
+    {"id":"scaly","leftEn":"Scaly","rightEn":"Not scaly","leftKo":"비늘이 있음","rightKo":"비늘이 없음"},
+    {"id":"can_fly","leftEn":"Can fly","rightEn":"Cannot fly","leftKo":"날 수 있음","rightKo":"날 수 없음"},
+    {"id":"has_2_legs","leftEn":"Has 2 legs","rightEn":"Other","leftKo":"다리가 2개","rightKo":"그 외"},
+    {"id":"lays_eggs","leftEn":"Lays eggs","rightEn":"Does not lay eggs","leftKo":"알을 낳음","rightKo":"알을 낳지 않음"},
+    {"id":"eats_bugs","leftEn":"Eats bugs","rightEn":"Does not eat bugs","leftKo":"곤충을 먹음","rightKo":"곤충을 먹지 않음"},
+    {"id":"custom","leftEn":"________","rightEn":"Not ________","leftKo":"________","rightKo":"________이(가) 아님"}
+  ]
+}
