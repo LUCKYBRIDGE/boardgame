@@ -78,7 +78,7 @@ def fit_font(text: str, font_path: str, start: int, min_size: int, max_width: fl
     size = start
     while size >= min_size:
         f = ImageFont.truetype(font_path, size=size)
-        box = f.getbboxhtext)
+        box = f.getbbox(text)
         if box[2] - box[0] <= max_width:
             return f
         size -= 2
@@ -129,7 +129,7 @@ def draw_wrapped_center(draw, center_x, center_y, text, font_path, start_size, m
     for i in range(1, len(words)):
         a, b = " ".join(words[:i]), " ".join(words[i:])
         f = fit_font(max((a,b), key=len), font_path, start_size, int(start_size*0.65), max_width)
-        widths = [(f.getbboxht)[2]-f.getbbox(t)[0]) for t in (a,b)]
+        widths = [(f.getbbox(t)[2]-f.getbbox(t)[0]) for t in (a,b)]
         score = max(widths) + abs(widths[0]-widths[1])*0.2
         if best is None or score < best[0]: best = (score,a,b,f)
     _, a, b, f = best
