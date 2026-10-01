@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "original_category_pair.schema.json",
+  "title": "PLIX Animal-gorithm Original Category Pair Localization",
+  "type": "object",
+  "required": ["id", "leftEn", "rightEn", "leftKo", "rightKo"],
+  "properties": {
+    "id": {"type":"string","pattern":"^[a-z0-9_]+$"},
+    "leftEn": {"type":"string"},
+    "rightEn": {"type":"string"},
+    "leftKo": {"type":"string"},
+    "rightKo": {"type":"string"}
+  },
+  "additionalProperties": false
+}
