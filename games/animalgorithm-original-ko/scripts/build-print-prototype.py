@@ -285,7 +285,7 @@ def draw_cover(c):
         "분류 기준 카드 8장: PLIX 원본 분류 기준의 한국어판",
         "직접 작성 분류 기준 카드 8장: 프로젝트 기본 추가(원본형 4장 + 자유형 4장)",
         "왼쪽 / 다음 카드 / 오른쪽 플레이 영역: A4 가로 1장",
-        "상세 규칙 3쪽 + 플레이테스트 기록지 1쪽",
+        "상세 규칙 요약 + 플레이테스트 기록지 1쪽",
     ]
     y=ph-90*mm; c.setFont("Nanum",10)
     for t in items:
@@ -449,30 +449,66 @@ def draw_rules(c):
     c.setFont("Nanum",7); c.setFillColor(colors.HexColor("#666666")); c.drawCentredString(pw/2,8*mm,"원작을 단순 참/거짓 단일 규칙 게임으로 축소하지 않습니다.")
     c.showPage()
 
+
 def draw_checklist(c):
-    pw,ph=portrait(A4); m=15*mm; c.setPageSize((pw,ph)); y=ph-18*mm
-    c.setFont("NanumBold",18); c.drawString(m,y,"Original KO 플레이테스트 기록지"); y-=10*mm
-    c.setFont("Nanum",8.5); c.drawString(m,y,"날짜: __________________  학년: ______  인원: ______  라운드: ______"); y-=7*mm
-    c.drawString(m,y,"결정자: __________________________  사용 분류 기준: ______________________________"); y-=9*mm
-    blocks=[
-        ("역할과 차례",["결정자와 추리 플레이어 역할을 구분했음","개인 차례가 시계 방향으로 자연스럽게 이어졌음","현재 차례 플레이어가 공식 행동 하나를 선택했음","새 동물 시험 때 모든 추리 플레이어가 결과 공개 전에 동시에 위치를 예측했음"]),
-        ("비밀정보 관리",["결정자 외에는 비밀 분류 기준을 보지 못했음","분류 기준을 시작 전에 확정했고 라운드 중 바꾸지 않았음","결정자의 표정/말/손동작/망설임이 힌트가 되지 않았음"]),
-        ("규칙 이해",["왼쪽 / 오른쪽 두 그룹을 이해함","분류 기준 추측과 새 카드 시험을 구분함","직접 예/아니오 질문 대신 카드를 통해 확인함"]),
-        ("추론 행동",["양쪽의 공통점과 차이를 비교함","새 데이터 후 가설을 수정함","정보가 클 것 같은 동물을 선택하려고 함"]),
-        ("실물/인쇄",["A4 플레이 영역에서 카드 이동에 문제가 없었음","한국어 동물명과 분류 기준을 쉽게 읽었음","필요한 테이블 공간에 전체 공개 카드와 플레이 영역을 배치할 수 있었음"]),
+    pw,ph=portrait(A4); m=10*mm; c.setPageSize((pw,ph))
+    c.setFont("NanumBold",18); c.drawString(m,ph-11*mm,"Original KO 플레이테스트 기록지")
+    c.setFont("Nanum",8); c.setFillColor(colors.HexColor("#666666"))
+    c.drawRightString(pw-m,ph-10.5*mm,"적어 쓰는 기록 중심")
+    c.setFillColor(colors.HexColor("#ECECEC")); c.roundRect(m,ph-25*mm,pw-2*m,12*mm,2.5*mm,fill=1,stroke=0)
+    c.setFillColor(colors.black); c.setFont("Nanum",8.3)
+    c.drawString(m+4*mm,ph-19*mm,"날짜: ____________________   학년: ______   인원: ______   라운드: ______")
+    c.drawString(m+4*mm,ph-23*mm,"결정자: _____________________________   사용 분류 기준: __________________________________")
+
+    def panel(x,y,w,h,title):
+        c.setFillColor(colors.HexColor("#F7F7F7")); c.setStrokeColor(colors.black); c.setLineWidth(1)
+        c.roundRect(x,y,w,h,4*mm,fill=1,stroke=1)
+        c.setFillColor(colors.black); c.setFont("NanumBold",11.5)
+        c.drawString(x+4*mm,y+h-7.5*mm,title)
+
+    def line_field(label,x,y,label_w,end_x,size=8.4):
+        c.setFont("Nanum",size); c.setFillColor(colors.black); c.drawString(x,y,label)
+        c.line(x+label_w,y-0.7*mm,end_x,y-0.7*mm)
+
+    p1_top=ph-30*mm; p1_h=35*mm
+    panel(m,p1_top-p1_h,pw-2*m,p1_h,"진행 확인")
+    items=["차례 순서가 자연스러웠다","모두 동시에 위치를 예측했다","결정자가 힌트를 주지 않았다","A4 플레이 영역 사용이 편했다"]
+    c.setFont("Nanum",8.2)
+    for i,it in enumerate(items):
+        col=i%2; row=i//2
+        xx=m+6*mm+col*(pw-2*m)/2
+        yy=p1_top-13*mm-row*9*mm
+        c.drawString(xx,yy,"□ "+it)
+    line_field("헷갈린 점:",m+6*mm,p1_top-31*mm,22*mm,pw-m-6*mm)
+
+    p2_top=p1_top-p1_h-5*mm; p2_h=72*mm
+    panel(m,p2_top-p2_h,pw-2*m,p2_h,"플레이 기록")
+    y=p2_top-14*mm
+    fields=[
+        ("처음 떠올린 기준:",34*mm),
+        ("시험한 동물:",28*mm),
+        ("그 동물을 고른 이유:",38*mm),
+        ("위치 예측:",25*mm),
+        ("실제 위치:",25*mm),
+        ("가설이 바뀐 점:",30*mm),
+        ("최종 정답:",25*mm),
+        ("라운드 시간:",25*mm),
     ]
-    for title,items in blocks:
-        c.setFont("NanumBold",10.2); c.drawString(m,y,title); y-=5.7*mm
-        c.setFont("Nanum",8.2)
-        for t in items:
-            c.drawString(m+4*mm,y,"□ "+t); y-=5.1*mm
-        y-=1.6*mm
-    c.setFont("NanumBold",9.7); c.drawString(m,y,"기록"); y-=5.8*mm
-    for f in ["차례가 헷갈렸던 순간","가장 유용했던 추가 카드","가설을 바꾸게 한 카드","최종 정답까지 추가된 카드 수","라운드 시간"]:
-        c.setFont("Nanum",8.2); c.drawString(m,y,f+":"); c.line(m+42*mm,y-1,pw-m,y-1); y-=7*mm
-    c.setFont("NanumBold",9.2); c.drawString(m,y,"수정 우선순위"); y-=5.7*mm
-    for t in ["P0 진행 불가:","P1 원작 구조/학습 문제:","P2 한국어 표현/운영/인쇄 문제:","P3 개선판 후보 아이디어:"]:
-        c.setFont("Nanum",8.1); c.drawString(m,y,t); c.line(m+37*mm,y-1,pw-m,y-1); y-=6.6*mm
+    for label,lw in fields:
+        line_field(label,m+6*mm,y,lw,pw-m-6*mm)
+        y-=7*mm
+
+    p3_top=p2_top-p2_h-5*mm; p3_h=46*mm
+    panel(m,p3_top-p3_h,pw-2*m,p3_h,"애매했던 동물 / 판정")
+    y=p3_top-14*mm
+    for _ in range(5):
+        c.line(m+6*mm,y,pw-m-6*mm,y); y-=6.5*mm
+
+    p4_top=p3_top-p3_h-5*mm; p4_y=8*mm; p4_h=p4_top-p4_y
+    panel(m,p4_y,pw-2*m,p4_h,"다음에 바꾸고 싶은 점 / 추가 메모")
+    y=p4_top-14*mm
+    for _ in range(9):
+        c.line(m+6*mm,y,pw-m-6*mm,y); y-=6.4*mm
     c.showPage()
 
 def build(deck_pdf: Path, out_pdf: Path):
