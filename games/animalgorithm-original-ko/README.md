@@ -4,7 +4,7 @@ PLIX의 **Animal-gorithm**을 원작의 핵심 플레이 구조를 유지하면�
 
 ## 현재 기준
 
-최신 실행 규칙은 루트의:
+최신 실행 규칙은:
 
 `ORIGINAL_KO_CURRENT.md`
 
@@ -30,17 +30,34 @@ PLIX의 **Animal-gorithm**을 원작의 핵심 플레이 구조를 유지하면�
 ## 현재 제작 방향
 
 - 동물 이미지: PLIX 원본 활용
-- 동물 이름: 한국어화
+- 동물 이름: 한국어 대형 + 영문 원명 소형 병기 (`PROJECT DEFAULT`)
 - Category Idea: 한국어판 자체 제작
 - 직접 작성 Category 카드: 큰 빈칸 제공
 - 플레이 영역: LEFT / NEXT / RIGHT
 - 상세 규칙 및 비밀정보 관리 주의사항 제공
+
+## 인쇄 프로토타입 생성
+
+`docs/PAPER_PROTOTYPE_SPEC.md`가 현재 인쇄 기준이다.
+
+PLIX 동물 카드 PDF를 로컬에 준비한 뒤:
+
+```bash
+pip install reportlab pymupdf pillow
+python scripts/build-print-prototype.py \
+  --deck-pdf /path/to/plix-deck-animal-database.pdf \
+  --out ./output/Animalgorithm_Original_KO_Print_Prototype.pdf
+```
+
+생성물에는 46종 동물 카드, 빈 카드 10장, Category Idea, 직접 작성 카드, LEFT/NEXT/RIGHT 영역, 상세 규칙, 플레이테스트 기록지가 포함된다.
+
+PLIX 원본 이미지가 포함된 생성 PDF는 원본 자산 라이선스 범위를 최종 확인하기 전까지 저장소에 상시 커밋하지 않는다.
 
 ## 폴더 역할
 
 - `data/` — 동물명, Category 데이터와 스키마
 - `docs/` — 프로토타입 명세, Source Gap, 플레이테스트
 - `references/` — PLIX 출처 및 라이선스 메모
-- `scripts/` — 데이터 무결성 검사
+- `scripts/` — 데이터 무결성 검사 및 인쇄 프로토타입 생성
 
 과거 버전은 별도 `v0.x` 파일로 누적하지 않고 Git 이력으로 확인합니다.
