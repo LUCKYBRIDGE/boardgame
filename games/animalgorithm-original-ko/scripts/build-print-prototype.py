@@ -66,7 +66,7 @@ def load_project_data(data_dir: Path):
     if len(ANIMALS) != 46:
         raise ValueError(f"Expected 46 named animals, got {len(ANIMALS)}")
     if len(CATEGORIES) != 8:
-        raise ValueError(f"Expected 8 Category Idea pairs, got {len(CATEGORIES)}")
+        raise ValueError(f"Expected 8 분류 기준 카드 pairs, got {len(CATEGORIES)}")
 
 # Source slot order is column-major on each PLIX sheet:
 # 1=col1/top, 2=col1/bottom, 3=col2/top, ...
@@ -211,24 +211,24 @@ def draw_custom_category_card(c, x,y,w,h, freeform=False, serial=1):
     c.setFillColor(colors.black); c.setFont("NanumBold",13); c.drawCentredString(x+w/2,y+h-17*mm,"직접 작성 카테고리")
     c.setLineWidth(1.3); c.line(x+w/2,y+15*mm,x+w/2,y+h-24*mm)
     if freeform:
-        c.setFont("NanumBold",9); c.drawCentredString(x+w/4,y+h-29*mm,"LEFT 기준")
-        c.drawCentredString(x+3*w/4,y+h-29*mm,"RIGHT 기준")
+        c.setFont("NanumBold",9); c.drawCentredString(x+w/4,y+h-29*mm,"왼쪽 기준")
+        c.drawCentredString(x+3*w/4,y+h-29*mm,"오른쪽 기준")
         for xx in [x+4*mm,x+w/2+4*mm]:
             c.roundRect(xx,y+27*mm,w/2-8*mm,29*mm,2*mm,stroke=1,fill=0)
-        c.setFont("Nanum",6.5); c.setFillColor(colors.HexColor("#666666")); c.drawCentredString(x+w/2,y+7*mm,"PROJECT DEFAULT - 두 범주가 겹치지 않게 작성")
+        c.setFont("Nanum",6.5); c.setFillColor(colors.HexColor("#666666")); c.drawCentredString(x+w/2,y+7*mm,"프로젝트 기본 - 자유 작성형")
     else:
         c.setFont("NanumBold",9); c.drawCentredString(x+w/4,y+h-29*mm,"기준 X")
         c.drawCentredString(x+3*w/4,y+h-29*mm,"X가 아님")
         c.roundRect(x+5*mm,y+29*mm,w/2-10*mm,28*mm,2*mm,stroke=1,fill=0)
         c.setFont("Nanum",7.2); c.setFillColor(colors.HexColor("#666666")); c.drawCentredString(x+3*w/4,y+44*mm,"왼쪽에 쓴 기준의 반대")
-        c.drawCentredString(x+w/2,y+7*mm,"PROJECT DEFAULT - 원본형(X / X가 아님)")
+        c.drawCentredString(x+w/2,y+7*mm,"프로젝트 기본 - 원본형 추가 사본")
 
 
 
 def draw_source_category_card(c, x,y,w,h, left_ko, right_ko, custom=False):
     c.setStrokeColor(colors.black); c.setFillColor(colors.white); c.rect(x,y,w,h,stroke=1,fill=1)
     c.setFillColor(colors.HexColor("#555555")); c.setFont("Nanum",6.2)
-    c.drawString(x+4*mm,y+h-7.5*mm,"PLIX Category Idea - 한국어판")
+    c.drawString(x+4*mm,y+h-7.5*mm,"PLIX 분류 기준 카드 - 한국어판")
     c.setFillColor(colors.black); c.setFont("NanumBold",13); c.drawCentredString(x+w/2,y+h-17*mm,"카테고리 아이디어")
     c.setLineWidth(1.3); c.line(x+w/2,y+15*mm,x+w/2,y+h-24*mm)
     if custom:
@@ -247,7 +247,7 @@ def draw_source_category_card(c, x,y,w,h, left_ko, right_ko, custom=False):
         ls=fit_pdf(left_ko,w/2-8*mm); rs=fit_pdf(right_ko,w/2-8*mm)
         c.setFont("NanumBold",ls); c.drawCentredString(x+w/4,y+h*0.49,left_ko)
         c.setFont("NanumBold",rs); c.drawCentredString(x+3*w/4,y+h*0.49,right_ko)
-    c.setFillColor(colors.HexColor("#666666")); c.setFont("Nanum",6.2); c.drawCentredString(x+w/2,y+6*mm,"SOURCE - PLIX 원본 Category Idea")
+    c.setFillColor(colors.HexColor("#666666")); c.setFont("Nanum",6.2); c.drawCentredString(x+w/2,y+6*mm,"SOURCE - PLIX 원본 분류 기준 카드")
 
 
 def draw_source_category_sheet(c):
@@ -258,7 +258,7 @@ def draw_source_category_sheet(c):
         row=i//4; col=i%4; x=x0+col*card_w; y=y0+(1-row)*card_h
         draw_source_category_card(c,x,y,card_w,card_h,left_ko,right_ko,custom=(i==7))
     c.setFont("Nanum",6.5); c.setFillColor(colors.HexColor("#666666"))
-    c.drawCentredString(pw/2,2.3*mm,"Category Idea 8장 - SOURCE 카테고리 한국어화 / 8번은 X / X가 아님 직접 작성형")
+    c.drawCentredString(pw/2,2.3*mm,"분류 기준 카드 8장 - SOURCE 카테고리 한국어화 / 8번은 X / X가 아님 직접 작성형")
     c.showPage()
 
 def draw_direct_category_sheet(c):
@@ -282,9 +282,9 @@ def draw_cover(c):
     c.setFillColor(colors.black); c.setFont("NanumBold",12); c.drawString(m,ph-79*mm,"세트 구성")
     items=[
         "동물 카드 56장: 이름 있는 원본 46장 + 빈 동물 카드 10장",
-        "Category Idea 8장: PLIX 원본 카테고리의 한국어판",
+        "분류 기준 카드 8장: PLIX 원본 카테고리의 한국어판",
         "직접 작성 Category 8장: PROJECT DEFAULT 추가(원본형 4장 + 자유형 4장)",
-        "LEFT / NEXT / RIGHT 플레이 영역: A3 기본 + A4 컴팩트 대체판",
+        "왼쪽 / 다음 카드 / 오른쪽 플레이 영역: A3 기본 + A4 컴팩트 대체판",
         "상세 규칙 2쪽 + 플레이테스트 기록지 1쪽",
     ]
     y=ph-90*mm; c.setFont("Nanum",10)
@@ -317,16 +317,16 @@ def draw_playmat(c, compact=False):
         pw,ph=landscape(A3); title="A3 기본 플레이 영역"
     c.setPageSize((pw,ph)); margin=12*mm
     c.setFont("NanumBold",15); c.drawString(margin,ph-11*mm,title)
-    c.setFont("Nanum",7.5); c.setFillColor(colors.HexColor("#555555")); c.drawRightString(pw-margin,ph-10.5*mm,"PROJECT DEFAULT: NEXT 영역 포함")
+    c.setFont("Nanum",7.5); c.setFillColor(colors.HexColor("#555555")); c.drawRightString(pw-margin,ph-10.5*mm,"프로젝트 기본(PROJECT DEFAULT): "다음 카드" 영역 포함")
     usable_w=pw-2*margin; top=ph-20*mm; bottom=12*mm; usable_h=top-bottom
     next_w=(72*mm if not compact else 63*mm)
     side_w=(usable_w-next_w)/2
-    zones=[(margin,bottom,side_w,usable_h,"LEFT","왼쪽 그룹"),(margin+side_w,bottom,next_w,usable_h,"NEXT","다음에 시험할 카드"),(margin+side_w+next_w,bottom,side_w,usable_h,"RIGHT","오른쪽 그룹")]
+    zones=[(margin,bottom,side_w,usable_h,"왼쪽","왼쪽 그룹"),(margin+side_w,bottom,next_w,usable_h,"다음 카드","다음에 시험할 카드"),(margin+side_w+next_w,bottom,side_w,usable_h,"오른쪽","오른쪽 그룹")]
     for x,y,w,h,en,ko in zones:
         c.setFillColor(colors.white); c.setStrokeColor(colors.black); c.setLineWidth(1.4); c.roundRect(x,y,w,h,4*mm,stroke=1,fill=1)
         c.setFillColor(colors.black); c.setFont("NanumBold",22 if not compact else 18); c.drawCentredString(x+w/2,y+h-16*mm,en)
         c.setFont("NanumBold",11 if not compact else 9); c.drawCentredString(x+w/2,y+h-25*mm,ko)
-    # NEXT card footprint
+    # 다음 카드 card footprint
     nx,ny,nw,nh=zones[1][0],zones[1][1],zones[1][2],zones[1][3]
     fpw=(64*mm if not compact else 48*mm); fph=99/64*fpw
     fx=nx+(nw-fpw)/2; fy=ny+(nh-fph)/2-5*mm
@@ -339,7 +339,7 @@ def draw_playmat(c, compact=False):
     rx=nx+nw
     c.line(rx+2*mm,cy,rx+8*mm,cy); c.line(rx+8*mm,cy,rx+5*mm,cy+2*mm); c.line(rx+8*mm,cy,rx+5*mm,cy-2*mm)
     c.setFillColor(colors.HexColor("#555555")); c.setFont("Nanum",7)
-    c.drawCentredString(pw/2,4*mm,"예측이 끝난 뒤 Decider가 NEXT 카드를 LEFT 또는 RIGHT로 이동합니다.")
+    c.drawCentredString(pw/2,4*mm,"예측이 끝난 뒤 결정자가 다음 카드를 왼쪽 또는 오른쪽으로 이동합니다.")
     c.showPage()
 
 
@@ -370,23 +370,23 @@ def draw_rules(c):
     c.setFont("NanumBold",20); c.drawString(m,y,"상세 규칙 1/2 - 준비와 한 차례")
     y-=12*mm
     c.setFont("NanumBold",11); c.drawString(m,y,"게임 목표  [SOURCE]"); y-=7*mm
-    y=draw_paragraph(c,"LEFT의 공통점, RIGHT의 공통점, 두 그룹의 차이를 관찰해 Decider가 정한 비밀 카테고리 한 쌍을 알아냅니다.",m,y,colw)
+    y=draw_paragraph(c,"왼쪽의 공통점, 오른쪽의 공통점, 두 그룹의 차이를 관찰해 결정자가 정한 비밀 카테고리 한 쌍을 알아냅니다.",m,y,colw)
     y-=4*mm; c.setFont("NanumBold",11); c.drawString(m,y,"준비"); y-=7*mm
     steps=[
-        ("[PROJECT DEFAULT] LEFT / NEXT / RIGHT 플레이 영역을 중앙에 놓습니다.",),
+        ("[PROJECT DEFAULT] 왼쪽 / 다음 카드 / 오른쪽 플레이 영역을 중앙에 놓습니다.",),
         ("[PROJECT DEFAULT] 동물 카드를 모두 볼 수 있게 펼칩니다.",),
-        ("한 명이 Decider가 됩니다. [SOURCE]",),
-        ("Decider는 Category Idea 카드 1장을 고르거나 직접 카테고리를 작성합니다. 다른 플레이어에게는 비밀로 합니다. [SOURCE + PROJECT DEFAULT 보관 방식]",),
-        ("[PROJECT DEFAULT] 시작 예시 동물 3장을 LEFT / RIGHT에 놓습니다. 양쪽에 최소 1장씩 둡니다.",),
+        ("한 명이 결정자가 됩니다. [SOURCE]",),
+        ("결정자는 분류 기준 카드 카드 1장을 고르거나 직접 카테고리를 작성합니다. 다른 플레이어에게는 비밀로 합니다. [SOURCE + PROJECT DEFAULT 보관 방식]",),
+        ("[PROJECT DEFAULT] 시작 예시 동물 3장을 왼쪽 / 오른쪽에 놓습니다. 양쪽에 최소 1장씩 둡니다.",),
     ]
     for i,(t,) in enumerate(steps,1):
         y=draw_paragraph(c,t,m+4*mm,y,colw-4*mm,size=9,leading=12,bullet=f"{i}. "); y-=2*mm
     y-=2*mm; c.setFont("NanumBold",11); c.drawString(m,y,"한 차례 - 둘 중 하나를 선택"); y-=8*mm
     c.setFont("NanumBold",10); c.drawString(m+4*mm,y,"A. 비밀 카테고리 추측"); y-=6*mm
-    y=draw_paragraph(c,"LEFT와 RIGHT의 기준을 한 쌍으로 말합니다. 정확히 맞히면 라운드가 끝납니다. [SOURCE]",m+8*mm,y,colw-8*mm,size=9)
-    y=draw_paragraph(c,"[PROJECT DEFAULT] 오답 페널티와 부분 힌트는 없습니다. Decider는 ‘정답’ 또는 ‘아직 정답이 아님’ 정도만 말합니다.",m+8*mm,y,colw-8*mm,size=9)
+    y=draw_paragraph(c,"왼쪽과 오른쪽의 기준을 한 쌍으로 말합니다. 정확히 맞히면 라운드가 끝납니다. [SOURCE]",m+8*mm,y,colw-8*mm,size=9)
+    y=draw_paragraph(c,"[PROJECT DEFAULT] 오답 페널티와 부분 힌트는 없습니다. 결정자는 ‘정답’ 또는 ‘아직 정답이 아님’ 정도만 말합니다.",m+8*mm,y,colw-8*mm,size=9)
     y-=3*mm; c.setFont("NanumBold",10); c.drawString(m+4*mm,y,"B. 새 동물 시험"); y-=6*mm
-    trial=["아직 분류되지 않은 동물 1장을 고릅니다.","[PROJECT DEFAULT] 그 카드를 먼저 NEXT에 둡니다.","Decider가 움직이기 전에 플레이어들이 LEFT / RIGHT를 예측합니다. [SOURCE]","예측 후 Decider가 실제 위치로 이동합니다.","새 결과를 보고 가설을 수정하고 다음 플레이어 차례로 넘어갑니다."]
+    trial=["아직 분류되지 않은 동물 1장을 고릅니다.","[PROJECT DEFAULT] 그 카드를 먼저 다음 카드에 둡니다.","결정자가 움직이기 전에 플레이어들이 왼쪽 / 오른쪽을 예측합니다. [SOURCE]","예측 후 결정자가 실제 위치로 이동합니다.","새 결과를 보고 가설을 수정하고 다음 플레이어 차례로 넘어갑니다."]
     for i,t in enumerate(trial,1):
         y=draw_paragraph(c,t,m+8*mm,y,colw-8*mm,size=9,leading=12,bullet=f"{i}. "); y-=1.5*mm
     c.setFont("Nanum",7); c.setFillColor(colors.HexColor("#666666")); c.drawCentredString(pw/2,8*mm,"Original KO - SOURCE와 PROJECT DEFAULT를 구분해 표시")
@@ -397,11 +397,11 @@ def draw_rules(c):
     c.setFont("NanumBold",20); c.drawString(m,y,"상세 규칙 2/2 - 정보 관리와 종료")
     y-=12*mm
     sections=[
-        ("직접 질문", ["플레이어가 ‘포유류예요?’, ‘날개가 있으면 LEFT예요?’처럼 직접 예/아니오 질문을 해도 Decider는 답하지 않습니다. [PROJECT DEFAULT]", "대신 ‘확인하고 싶은 동물 카드를 골라 시험해 보세요.’라고 안내합니다."]),
-        ("Decider 주의사항", ["비밀 카테고리를 보이지 않게 하고, 첫 동물 배치 전에 확정하며 라운드 중 바꾸지 않습니다. [PROJECT DEFAULT]", "특정 동물만 예외로 만들지 않습니다.", "예측이 끝난 뒤 카드를 이동합니다.", "표정, 시선, 손짓, 망설임, ‘거의 맞았어’ 같은 말이 힌트가 되지 않게 합니다. [PROJECT DEFAULT]"]),
-        ("직접 작성 카테고리", ["원본형은 X / X가 아님 구조입니다. [SOURCE]", "추가 자유 작성형은 LEFT와 RIGHT를 각각 적습니다. [PROJECT DEFAULT]", "두 범주가 겹치지 않고, 사용할 동물이 어느 쪽에도 속하지 않는 일이 없도록 작성합니다. 게임 중 수정하지 않습니다. [PROJECT DEFAULT]"]),
-        ("애매한 판정", ["Colorful, Eats bugs처럼 해석 차이가 생길 수 있습니다. 원작 카드이므로 Original KO에서는 삭제하지 않습니다. [SOURCE]", "Decider는 가능하면 라운드 전에 판정을 정하고, 논쟁이 생겨도 그 라운드에서는 기존 판정을 유지합니다. 라운드 후 기록합니다. [PROJECT DEFAULT]"]),
-        ("라운드 종료", ["비밀 카테고리 한 쌍을 정확히 맞히면 끝납니다. [SOURCE]", "의미가 같으면 정답으로 인정하고 점수는 사용하지 않습니다. 다음 Decider는 시계 방향입니다. [PROJECT DEFAULT]"]),
+        ("직접 질문", ["플레이어가 ‘포유류예요?’, ‘날개가 있으면 왼쪽이에요?’처럼 직접 예/아니오 질문을 해도 결정자는 답하지 않습니다. [PROJECT DEFAULT]", "대신 ‘확인하고 싶은 동물 카드를 골라 시험해 보세요.’라고 안내합니다."]),
+        ("결정자 주의사항", ["비밀 카테고리를 보이지 않게 하고, 첫 동물 배치 전에 확정하며 라운드 중 바꾸지 않습니다. [PROJECT DEFAULT]", "특정 동물만 예외로 만들지 않습니다.", "예측이 끝난 뒤 카드를 이동합니다.", "표정, 시선, 손짓, 망설임, ‘거의 맞았어’ 같은 말이 힌트가 되지 않게 합니다. [PROJECT DEFAULT]"]),
+        ("직접 작성 카테고리", ["원본형은 X / X가 아님 구조입니다. [SOURCE]", "추가 자유 작성형은 왼쪽과 오른쪽을 각각 적습니다. [PROJECT DEFAULT]", "두 범주가 겹치지 않고, 사용할 동물이 어느 쪽에도 속하지 않는 일이 없도록 작성합니다. 게임 중 수정하지 않습니다. [PROJECT DEFAULT]"]),
+        ("애매한 판정", ["“색이 화려함”, “곤충을 먹음”처럼 해석 차이가 생길 수 있습니다. 원작 카드이므로 Original KO에서는 삭제하지 않습니다. [SOURCE]", "결정자는 가능하면 라운드 전에 판정을 정하고, 논쟁이 생겨도 그 라운드에서는 기존 판정을 유지합니다. 라운드 후 기록합니다. [PROJECT DEFAULT]"]),
+        ("라운드 종료", ["비밀 카테고리 한 쌍을 정확히 맞히면 끝납니다. [SOURCE]", "의미가 같으면 정답으로 인정하고 점수는 사용하지 않습니다. 다음 결정자는 시계 방향입니다. [PROJECT DEFAULT]"]),
     ]
     for title,bullets in sections:
         c.setFont("NanumBold",11); c.setFillColor(colors.black); c.drawString(m,y,title); y-=6.5*mm
@@ -410,7 +410,7 @@ def draw_rules(c):
         y-=2.5*mm
     c.setFont("NanumBold",10); c.drawString(m,y,"핵심 사고 루프  [SOURCE의 학습 의도에 맞춘 정리]"); y-=7*mm
     c.setFont("Nanum",9); c.drawString(m+4*mm,y,"데이터 관찰 → 공통점/차이 발견 → 가설 생성 → 새 동물 선택 → 위치 예측 → 결과 확인 → 가설 수정")
-    c.setFont("Nanum",7); c.setFillColor(colors.HexColor("#666666")); c.drawCentredString(pw/2,8*mm,"원작을 단순한 True/False 단일 규칙 게임으로 축소하지 않습니다.")
+    c.setFont("Nanum",7); c.setFillColor(colors.HexColor("#666666")); c.drawCentredString(pw/2,8*mm,"원작을 단순한 참/거짓 단일 규칙 게임으로 축소하지 않습니다.")
     c.showPage()
 
 
@@ -418,11 +418,11 @@ def draw_checklist(c):
     pw,ph=portrait(A4); m=15*mm; c.setPageSize((pw,ph)); y=ph-18*mm
     c.setFont("NanumBold",18); c.drawString(m,y,"Original KO 플레이테스트 기록지"); y-=10*mm
     c.setFont("Nanum",8.5)
-    meta=["날짜: ____________________   학년: ______   인원: ______   라운드: ______", "Decider: __________________________   사용 카테고리: ______________________________"]
+    meta=["날짜: ____________________   학년: ______   인원: ______   라운드: ______", "결정자: __________________________   사용 카테고리: ______________________________"]
     for t in meta: c.drawString(m,y,t); y-=7*mm
     blocks=[
-        ("비밀정보 관리",["Decider 외에는 비밀 카테고리를 보지 못했음","카테고리를 시작 전에 확정했고 라운드 중 바꾸지 않았음","표정/말/손짓/망설임이 힌트가 되지 않았음"]),
-        ("규칙 이해",["LEFT / RIGHT 두 그룹을 이해함","새 카드가 분류되기 전에 먼저 예측함","카테고리 추측과 새 카드 시험을 구분함","직접 예/아니오 질문 대신 카드를 통해 확인함"]),
+        ("비밀정보 관리",["결정자 외에는 비밀 카테고리를 보지 못했음","카테고리를 시작 전에 확정했고 라운드 중 바꾸지 않았음","표정/말/손짓/망설임이 힌트가 되지 않았음"]),
+        ("규칙 이해",["왼쪽 / 오른쪽 두 그룹을 이해함","새 카드가 분류되기 전에 먼저 예측함","카테고리 추측과 새 카드 시험을 구분함","직접 예/아니오 질문 대신 카드를 통해 확인함"]),
         ("추론 행동",["양쪽의 공통점과 차이를 비교함","새 데이터 후 가설을 수정함","정보 가치가 큰 동물을 선택하려고 함","비슷한 카드만 반복해서 고르지 않음"]),
         ("카테고리 문제",["양쪽에 동시에 들어가는 동물이 없었음","어느 쪽에도 들어가지 않는 동물이 없었음","주관성 때문에 진행이 막히지 않았음"]),
     ]
