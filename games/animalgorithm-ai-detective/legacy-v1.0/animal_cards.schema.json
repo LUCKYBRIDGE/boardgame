@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "animal_cards.schema.json",
+  "title": "Animal Card",
+  "type": "object",
+  "required": [
+    "id",
+    "nameKo",
+    "nameEn",
+    "image",
+    "features"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^animal_[a-z0-9_]+$"
+    },
+    "nameKo": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nameEn": {
+      "type": "string",
+      "minLength": 1
+    },
+    "image": {
+      "type": "string"
+    },
+    "features": {
+      "type": "object",
+      "required": [
+        "wings",
+        "legCount",
+        "habitat",
+        "bodyCover",
+        "size"
+      ],
+      "properties": {
+        "wings": {
+          "type": "boolean"
+        },
+        "legCount": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "enum": [
+                0,
+                2,
+                4,
+                6,
+                8
+              ]
+            },
+            {
+              "type": "string",
+              "enum": [
+                "8+"
+              ]
+            }
+          ]
+        },
+        "habitat": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "land",
+              "water",
+              "air"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "bodyCover": {
+          "type": "string",
+          "enum": [
+            "fur",
+            "feathers",
+            "scales",
+            "exoskeleton",
+            "smooth"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
+        },
+        "diet": {
+          "type": "string",
+          "enum": [
+            "herbivore",
+            "carnivore",
+            "omnivore"
+          ]
+        },
+        "vertebrate": {
+          "type": "boolean"
+        },
+        "warmBlooded": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
