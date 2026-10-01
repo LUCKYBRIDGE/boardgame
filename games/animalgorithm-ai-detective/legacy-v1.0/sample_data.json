@@ -1,0 +1,181 @@
+{
+  "animals": [
+    {
+      "id": "animal_duck",
+      "nameKo": "오리",
+      "nameEn": "Duck",
+      "image": "assets/animals/duck.svg",
+      "features": {
+        "wings": true,
+        "legCount": 2,
+        "habitat": [
+          "land",
+          "water"
+        ],
+        "bodyCover": "feathers",
+        "size": "small",
+        "diet": "omnivore",
+        "vertebrate": true,
+        "warmBlooded": true
+      }
+    },
+    {
+      "id": "animal_cat",
+      "nameKo": "고양이",
+      "nameEn": "Cat",
+      "image": "assets/animals/cat.svg",
+      "features": {
+        "wings": false,
+        "legCount": 4,
+        "habitat": [
+          "land"
+        ],
+        "bodyCover": "fur",
+        "size": "small",
+        "diet": "carnivore",
+        "vertebrate": true,
+        "warmBlooded": true
+      }
+    },
+    {
+      "id": "animal_penguin",
+      "nameKo": "펭귄",
+      "nameEn": "Penguin",
+      "image": "assets/animals/penguin.svg",
+      "features": {
+        "wings": true,
+        "legCount": 2,
+        "habitat": [
+          "land",
+          "water"
+        ],
+        "bodyCover": "feathers",
+        "size": "medium",
+        "diet": "carnivore",
+        "vertebrate": true,
+        "warmBlooded": true
+      }
+    },
+    {
+      "id": "animal_eagle",
+      "nameKo": "독수리",
+      "nameEn": "Eagle",
+      "image": "assets/animals/eagle.svg",
+      "features": {
+        "wings": true,
+        "legCount": 2,
+        "habitat": [
+          "land",
+          "air"
+        ],
+        "bodyCover": "feathers",
+        "size": "medium",
+        "diet": "carnivore",
+        "vertebrate": true,
+        "warmBlooded": true
+      }
+    },
+    {
+      "id": "animal_frog",
+      "nameKo": "개구리",
+      "nameEn": "Frog",
+      "image": "assets/animals/frog.svg",
+      "features": {
+        "wings": false,
+        "legCount": 4,
+        "habitat": [
+          "land",
+          "water"
+        ],
+        "bodyCover": "smooth",
+        "size": "small",
+        "diet": "carnivore",
+        "vertebrate": true,
+        "warmBlooded": false
+      }
+    },
+    {
+      "id": "animal_bee",
+      "nameKo": "꿀벌",
+      "nameEn": "Bee",
+      "image": "assets/animals/bee.svg",
+      "features": {
+        "wings": true,
+        "legCount": 6,
+        "habitat": [
+          "land",
+          "air"
+        ],
+        "bodyCover": "exoskeleton",
+        "size": "small",
+        "diet": "herbivore",
+        "vertebrate": false,
+        "warmBlooded": false
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule_l1_01",
+      "difficulty": 1,
+      "labelKo": "날개가 있다",
+      "logic": "AND",
+      "conditions": [
+        {
+          "feature": "wings",
+          "operator": "eq",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "rule_l1_02",
+      "difficulty": 1,
+      "labelKo": "다리가 4개다",
+      "logic": "AND",
+      "conditions": [
+        {
+          "feature": "legCount",
+          "operator": "eq",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "rule_l2_01",
+      "difficulty": 2,
+      "labelKo": "날개가 있고 물에서도 산다",
+      "logic": "AND",
+      "conditions": [
+        {
+          "feature": "wings",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "feature": "habitat",
+          "operator": "contains",
+          "value": "water"
+        }
+      ]
+    },
+    {
+      "id": "rule_l3_01",
+      "difficulty": 3,
+      "labelKo": "날개가 있거나 물에서도 산다",
+      "logic": "OR",
+      "conditions": [
+        {
+          "feature": "wings",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "feature": "habitat",
+          "operator": "contains",
+          "value": "water"
+        }
+      ]
+    }
+  ]
+}
