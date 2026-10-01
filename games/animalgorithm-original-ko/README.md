@@ -29,6 +29,23 @@ PLIX의 **Animal-gorithm**을 먼저 원형에 가깝게 한국어로 구현하�
   - 곤충을 먹음 / 곤충을 먹지 않음
   - 사용자 정의 / 그 반대
 
+## 이미지 방향
+
+원작 충실 한국어판의 프로토타입은 **PLIX 원본 동물 이미지를 그대로 사용**하고 한국어 이름과 안내만 덧붙이는 방향으로 진행합니다.
+
+외부 배포/판매 단계에서는 원본 자산의 적용 라이선스를 다시 확인합니다.
+
+## v0.3 프로토타입 보완
+
+- 원본 Category Idea의 LEFT / RIGHT 구조를 그대로 보이게 재설계
+- 직접 작성 카드 8장 추가
+  - X / X가 아님 4장
+  - LEFT / RIGHT 자유 작성형 4장
+- 손글씨가 충분히 들어가도록 큰 빈칸 확보
+- NEXT 영역을 포함한 분류판 추가
+- 결정자가 숨겨야 할 정보와 비밀 유지 절차 명시
+- 직접 질문 금지, 오답 부분 힌트 금지 등 실제 진행 주의사항 추가
+
 ## 중요한 구현 원칙
 
 이 트랙에서는 동물 카드에 Feature 아이콘을 새로 붙이지 않습니다.
@@ -38,8 +55,10 @@ PLIX의 **Animal-gorithm**을 먼저 원형에 가깝게 한국어로 구현하�
 
 ## 파일
 
-- `docs/ORIGINAL_RULES_KO.md` — 한국어 플레이 규칙
+- `docs/ORIGINAL_RULES_KO.md` — 상세 한국어 플레이 규칙
 - `docs/SOURCE_GAP_DECISIONS.md` — 원본에 없는 세부사항과 프로젝트 기본값
+- `docs/PAPER_PROTOTYPE_SPEC.md` — 종이 프로토타입 구성
+- `docs/PLAYTEST_CHECKLIST_ORIGINAL_KO.md` — 원작판 플레이테스트
 - `references/PLIX_SOURCE_NOTES.md` — 페이지별 출처 정리
 - `data/animals.plix-ko.json` — 46종 동물명 한국어 매핑
 - `data/category_pairs.plix-ko.json` — 원본 Category Idea 8종
